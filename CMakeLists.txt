@@ -3,6 +3,12 @@ project(NeighborHash)
 
 set(CMAKE_CXX_STANDARD 14)
 
+
+add_definitions(-DABSL_HAVE_PREFETCH)
+add_definitions(-DNEIGHBOR_HASH_SIMD_FIND)
+add_definitions(-DNEIGHBOR_HASH_HUGEPAGE)
+
+
 include_directories(.)
 include_directories(neighbor_hash)
 
