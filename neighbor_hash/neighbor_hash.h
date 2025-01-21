@@ -210,9 +210,11 @@ class alignas(64) NeighborHashMap {
     int state_circular_buffer_index = 0;
     int state_circular_buffer_stop_index = -1;
     constexpr int kExpandSize = 4;
+    // [keys_size / pip_size, pip_size, chain_size]
     while (keys_index < keys_size) {
       auto* state_slice =
           &states[state_circular_buffer_index & (kPipelineSize - 1)];
+      // states = [kPipelineSize, 1] =
       for (int i = 0; i < kExpandSize; ++i) {
         auto& state = state_slice[i];
       try_find:
